@@ -1,7 +1,10 @@
 import java.awt.*;
-import java.io.File;
+
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
+import java.net.*;
+import java.io.*;
 
 public class Classes 
 {
@@ -15,5 +18,21 @@ public class Classes
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static ImageIcon getImage(String request) throws UnknownHostException, IOException, ClassNotFoundException
+    {
+        Socket s = new Socket("localhost", 7999);
+        PrintWriter pr = new PrintWriter(s.getOutputStream());
+        pr.println(request);
+        pr.flush();
+
+        ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+        
+        ImageIcon image = (ImageIcon) in.readObject();
+
+        System.out.println("server: " + image.toString());
+        s.close();
+        return image;
     }
 }
