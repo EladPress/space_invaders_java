@@ -35,6 +35,15 @@ public class Server {
                     case "shipHit":
                     object = new File("Assets/ShipHit.wav");
                     break;
+                    case "invaderBullet":
+                    object = new File("Assets/InvaderBullet.wav");
+                    break;
+                    case "invaderHit":
+                    object = new File("Assets/InvaderHit.wav");
+                    break;
+                    case "shipBullet":
+                    object = new File("Assets/ShipBullet.wav");
+                    break;
 
 
                     default:

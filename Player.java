@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
@@ -10,6 +11,7 @@ public class Player extends Thread
     int x, y, width, height, dir = 0, healthPoints = 15;
     SpaceInvadersPanel panel;
     ImageIcon image;
+    static File sound;
 
     public Player(SpaceInvadersPanel panel)
     {
@@ -19,7 +21,8 @@ public class Player extends Thread
         this.height = 45;
         this.panel = panel;
         try {
-            image = Classes.getImage("player");
+            this.image = (ImageIcon) Classes.getImage("player");
+            Player.sound = Classes.getSound("shipHit");
         } catch (UnknownHostException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -30,6 +33,7 @@ public class Player extends Thread
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
     }
 
     public void draw(Graphics g) throws UnknownHostException, ClassNotFoundException, IOException
@@ -76,6 +80,6 @@ public class Player extends Thread
     }
     public static void makeSound()
     {
-        Classes.sound("Assets/ShipHit.wav");
+        Classes.sound(sound);
     }
 }

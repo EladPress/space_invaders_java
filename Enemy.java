@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 import javax.swing.ImageIcon;
 public class Enemy
@@ -7,6 +10,7 @@ public class Enemy
     volatile int direction;
     public SpaceInvadersPanel panel;
     ImageIcon image;
+    static File sound;
     
     public Enemy(int x, int y, int width, int height, int healthPoints, int speed, SpaceInvadersPanel panel)
     {
@@ -18,6 +22,18 @@ public class Enemy
         this.speed = speed;
         this.direction = 1;
         this.panel = panel;
+        try {
+            this.sound = Classes.getSound("invaderHit");
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void draw(Graphics g)
@@ -37,6 +53,6 @@ public class Enemy
 
     public static void makeSound()
     {
-        Classes.sound("Assets/InvaderHit.wav");
+        Classes.sound(sound);
     }
 }

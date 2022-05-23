@@ -1,15 +1,43 @@
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 public class EnemyShot extends Shot
 {
+    //static File sound;
     public EnemyShot(int x, int y, int width, int height, int power, SpaceInvadersPanel panel)
     {
         super(x, y, width, height, power, panel);
+        try {
+            sound = Classes.getSound("invaderBullet");
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public EnemyShot(int x, int y, int power, SpaceInvadersPanel panel)
     {
         super(x, y, power, panel);
+        try {
+            sound = Classes.getSound("invaderBullet");
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -46,6 +74,6 @@ public class EnemyShot extends Shot
 
     public static void makeSound()
     {
-        Classes.sound("Assets/InvaderBullet.wav");
+        Classes.sound(sound);
     }
 }
