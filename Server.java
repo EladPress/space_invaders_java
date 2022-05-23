@@ -17,19 +17,33 @@ public class Server {
                 BufferedReader bf = new BufferedReader(in);
                 String request = bf.readLine();
 
-                ImageIcon image = new ImageIcon();
-
+                Object object = new ImageIcon();
+                //image = new File(request);
                 switch(request){
                     case "player":
-                    image = new ImageIcon("Assets/Spaceship.png");
+                    object = new ImageIcon("Assets/Spaceship.png");
                     break;
+                    case "squid":
+                    object = new ImageIcon("Assets/squid1.png");
+                    break;
+                    case "crab":
+                    object = new ImageIcon("Assets/Crab1.png");
+                    break;
+                    case "octopus":
+                    object = new ImageIcon("Assets/Octopus1.png");
+                    break;
+                    case "shipHit":
+                    object = new File("Assets/ShipHit.wav");
+                    break;
+
 
                     default:
 
                 }
 
                 ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
-                out.writeObject(image);
+                System.out.println(request);
+                out.writeObject(object);
                 out.flush();
             }
         }

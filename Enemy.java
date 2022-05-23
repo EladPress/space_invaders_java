@@ -1,9 +1,12 @@
 import java.awt.*;
+
+import javax.swing.ImageIcon;
 public class Enemy
 {
     public int healthPoints, x, y, width, height, speed;
     volatile int direction;
     public SpaceInvadersPanel panel;
+    ImageIcon image;
     
     public Enemy(int x, int y, int width, int height, int healthPoints, int speed, SpaceInvadersPanel panel)
     {
