@@ -2,6 +2,7 @@
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.awt.Graphics;
 import javax.swing.*;
 //git test git test
@@ -64,7 +65,12 @@ public class SpaceInvadersPanel extends JPanel
     {
         super.paintComponent(g);
         //shot.draw(g);
-        player.draw(g);
+        try {
+            player.draw(g);
+        } catch (ClassNotFoundException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
         if(!shots.isEmpty())
         {

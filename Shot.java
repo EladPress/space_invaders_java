@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -11,6 +13,7 @@ public class Shot extends Thread
 {
     public int x, y, width, height, power, direction, speed;
     SpaceInvadersPanel panel;
+    static File sound;
     
     public Shot(SpaceInvadersPanel panel)
     {
@@ -22,6 +25,18 @@ public class Shot extends Thread
         this.panel = panel;
         this.direction = 1;
         this.speed = 1;
+        try {
+            sound = Classes.getSound("shipBullet");
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public Shot(int x, int y, int width, int height, int power, SpaceInvadersPanel panel)
@@ -34,6 +49,18 @@ public class Shot extends Thread
         this.panel = panel;
         this.direction = 1;
         this.speed = 1;
+        try {
+            sound = Classes.getSound("shipBullet");
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     public Shot(int x, int y, int power, SpaceInvadersPanel panel)
     {
@@ -45,6 +72,18 @@ public class Shot extends Thread
         this.panel = panel;
         this.direction = 1;
         this.speed = 1;
+        try {
+            sound = Classes.getSound("shipBullet");
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void draw(Graphics g)
@@ -115,7 +154,7 @@ public class Shot extends Thread
 
     public static void makeSound()
     {
-        Classes.sound("Assets/ShipBullet.wav");
+        Classes.sound(sound);
     }
 
 }
